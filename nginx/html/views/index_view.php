@@ -1,8 +1,5 @@
 <?php
-
-
 require('./views/parts/html_head.php');
-
 ?>
 <body>
     <?php
@@ -18,16 +15,7 @@ require('./views/parts/html_head.php');
                     <div class="clock-inner">
                         <p class="clock_date"><span id="clock_year"></span>年<span id="clock_month"></span>月<span id="clock_day"></span>日 <span id="clock_week"></span>曜日</p>
                         <p class="clock_time"><span id="clock_hour"></span>:<span id="clock_min"></span><span id="clock_sec"></span></p>
-                        <!-- <%-- デバッグ用 --%>
-                        <%
-                        // HttpSession session = request.getSession(false);
-                        %> -->
-                        <!-- <%-- <p class="clock_date">
-                        デバッグ用 -セッション情報-<BR>
-                        名前:<%= name %>, 学生番号:<%= std_id %>, ID:<%= id %><BR>
-                        翌日:<%= next_day %>
-                        </p> --%> -->
-                        <%-- <p class="clock_date"><%=now_season%></p> --%>
+                        <!-- <%-- デバッグ用 --%> -->
                     </div>
                 </div>
             </div>
@@ -358,9 +346,6 @@ require('./views/parts/html_head.php');
     <%@ include file="modals/subject_detail.jsp" %>
 
     <%@ include file="modals/exchange_subject.jsp" %>
-
-    <!-- 本番では存在しないモーダル -->
-    <%@ include file="modals/plototype.jsp" %>
 </body>
 
 <script src="./JS/show_hide.js"></script>
