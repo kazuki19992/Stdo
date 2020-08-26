@@ -1,0 +1,75 @@
+.view-card{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 100%;
+    /* height: 60px; */
+    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.6));
+    display: flex;
+    margin-bottom: 10px;
+}
+.view-card-empty{
+    width: 100%;
+    /* height: 60px; */
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.view-num{
+    display: flexbox;
+    font-size: 30pt;
+    font-style: italic;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+.view-color{
+    width: 8px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+.view-color-empty{
+    width: 8px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    background-color: #FFF;
+    border-radius: 2px;
+    outline: rgb(150, 150, 150) solid 1.7px;
+    vertical-align: middle;
+}
+.view-data{
+    margin-left: 5px;
+    min-width: 50%;
+    margin-top: 3px;
+    height: 50px;
+}
+.view-subject{
+    font-size: 15pt;
+}
+.view-subject-task{
+    font-size: 7pt;
+}
+.view-subject-task-empty{
+    margin-top: 7pt;
+    font-size: 7pt;
+}
+.view-subject-data{
+    font-size: 7pt;
+    margin-top: -3px;
+}
+.view-classroom{
+    margin-left: auto;
+    margin-right: 5px;
+    font-size: 15pt;
+}
+.table-card-a{
+    color: rgb(36, 36, 36);
+}
+.view-subject-table{
+    font-size: 12px;
+    font-weight: bold;
+}

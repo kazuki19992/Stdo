@@ -1,0 +1,51 @@
+.cal{
+    width: 45%;
+    height: 250px;
+}
+.sat{
+    color: rgb(0, 99, 212);
+}
+.sun{
+    color: rgb(255, 45, 45);
+}
+.nextday, .prevday{
+    opacity: 50%;
+}
+.cal-border-none{
+    border-bottom: none;
+}
+
+.clock-outer{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    width: 100%;
+    height: 100%;
+    margin-top: 5.5em;
+    text-align: center;
+}
+
+.clock_date{
+    color: rgb(75,75,75);
+    font-size: 15px;
+}
+.clock_time{
+    color: rgb(75, 75, 75);
+    font-size: 45px;
+    margin-top: -15px;
+}
+#clock_sec{
+    vertical-align: super;
+    font-size: 20px;
+}
+
+#clock_year, #clock_month, #clock_day, #clock_week{
+    font-size: 20px;
+}
+
+.day{
+    padding: 0;
+}

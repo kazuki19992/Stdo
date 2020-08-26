@@ -1,0 +1,263 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+/* 共通 */
+html{
+    font-family: 'Roboto', 'A-OTF 新ゴ Pro R', 'Noto Sans JP', sans-serif;
+}
+#title {
+    margin-left: 2%;
+    font-size: 3.5em;
+    color: gray;
+}
+
+/* 共通 */
+#title #j{
+    color: rgb(38, 153, 4);
+    font-weight: bold;
+}
+
+/* 共通 */
+header {
+    display: block;
+    width: 100%;
+    height: 7em;
+    background-color: white;
+    position: fixed;
+    box-shadow: 0 0 8px gray;
+    padding-left: 2em;
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    z-index: 5;
+}
+.site-title{
+    display: flexbox;
+}
+
+/* 共通 */
+#content {
+    padding-top: 7em;
+    width: 90%;
+    min-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(100vh - 7em);
+}
+
+/* PCのみ */
+#left, .left, #wiki-left, #login-left {
+    float: left;
+    width: 47.5%;
+    margin-right: 5%;
+}
+.left-up{
+    height: 30%;
+}
+
+/* PCのみ */
+#right, #wiki-right {
+    float: left;
+    width: 47.5%;
+}
+#right-padding {
+    padding-top: 5.5em;
+    float: left;
+    width: 47.5%;
+}
+#right-up {
+    margin-bottom: 2em;
+}
+
+/* PCとSPで内容が異なります */
+.top-news-info {
+    color: rgb(75, 75, 75);
+    font-size: 7pt;
+}
+/* 共通 */
+#news-info {
+    color: rgb(75, 75, 75);
+    font-size: 7pt;
+}
+
+
+/* 共通 */
+.top-jump {
+    width: 100%;
+    text-align: right;
+    font-size: 10pt;
+}
+.news-jump {
+    color: rgb(38, 153, 4);
+}
+
+/* 共通 */
+#green-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px rgb(38, 153, 4);/*左線*/
+}
+.green-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px rgb(38, 153, 4);/*左線*/
+}
+
+/* 共通 */
+#blue-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #001E43;/*左線*/
+}
+.blue-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #001E43;/*左線*/
+}
+
+/* 共通 */
+#orange-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #ff9800;/*左線*/
+}
+.orange-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #ff9800;/*左線*/
+}
+
+/* 共通 */
+.card_p {
+    padding-bottom: 0.5em;
+    padding-top: 0.25em;
+}
+
+.none {
+    text-align: center;
+    width: 100%;
+    height: 25em;
+    margin: auto;
+    vertical-align: middle;
+    color: #757575;
+}
+
+/* 共通 */
+#init_btn {
+    position: absolute;
+    right: 2em;
+    bottom: 2em;
+}
+#init_back{
+    margin-right: 1em;
+}
+
+/* PCのみ */
+#login_p{
+    font-size: 25pt;
+    margin-top: 3em;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #2f2f2f;
+    color: #fff;
+    height: 100%;
+    vertical-align: middle;
+}
+#login_btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+#login_btn{
+    margin-right: 1em;
+}
+
+/* PCのみ */
+#login_body{
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0)-25%, rgb(255, 255, 255)50%), url('../IMG/login_bg.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+.login-title{
+    color: rgb(255, 255, 255);
+}
+
+/* 共通 */
+.post {
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 0.5em;
+}
+.post:after {
+    content: '';
+    display: block;
+    margin-top: 2px;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #fff;
+}
+
+/* 共通 */
+div #post_op.row{
+    margin-bottom: 0.5em !important;
+}
+
+
+
+
+#top-new-task{
+    display: flex;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
+    height: 200px;
+    background: linear-gradient(to bottom right, rgb(52, 184, 40), #058821);
+}
+
+.top-new-task-inner{
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+#top-all-task{
+    display: flex;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
+    height: 95px;
+    margin-bottom: 10px;
+    background: linear-gradient(to bottom right, rgb(228, 202, 54), #cf8701);
+}
+
+.top-all-task-inner{
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+#top-edit-class{
+    display: flex;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
+    height: 95px;
+    background: linear-gradient(to bottom right, rgb(76, 187, 238), #017dcf);
+}
+
+.top-edit-class-inner{
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+strong{
+    font-weight: bold;
+}
+
+#substitute{
+    display: none;
+}

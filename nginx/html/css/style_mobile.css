@@ -1,0 +1,143 @@
+#title {
+    margin-left: 2%;
+    font-size: 3.5em;
+    color: gray;
+    font-style: italic;
+}
+
+#title #j{
+    color: rgb(38, 153, 4);
+    font-weight: bold;
+}
+
+header {
+    display: block;
+    width: 100%;
+    height: 7em;
+    background-color: white;
+    position: fixed;
+    box-shadow: 0 0 8px gray;
+    padding-left: 2em;
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    z-index: 5;
+}
+
+#contents {
+    padding-top: 7em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 共通 */
+#green-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px rgb(38, 153, 4);/*左線*/
+}
+.green-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px rgb(38, 153, 4);/*左線*/
+}
+
+/* 共通 */
+#blue-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #001E43;/*左線*/
+}
+.blue-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #001E43;/*左線*/
+}
+
+/* 共通 */
+#orange-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #ff9800;/*左線*/
+}
+.orange-title {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #ff9800;/*左線*/
+}
+
+.top-news-info {
+    display: none;
+}
+
+/* 共通 */
+#news-info {
+    color: rgb(75, 75, 75);
+    font-size: 7pt;
+}
+
+/* 共通 */
+.top-jump {
+    width: 100%;
+    text-align: right;
+    font-size: 10pt;
+}
+.news-jump {
+    color: rgb(38, 153, 4);
+}
+
+/* 共通 */
+.card_p {
+    padding-bottom: 0.5em;
+    padding-top: 0.25em;
+}
+
+/* SPのみ */
+.flexbox {
+    display: flex;
+    flex-flow: column;
+}
+#wiki-left {
+    order: 2;
+}
+#wiki-right {
+    order: 1;
+}
+
+/* 共通 */
+#init_btn {
+    position: absolute;
+    right: 2em;
+    bottom: 2em;
+}
+#init_back{
+    margin-right: 1em;
+}
+#login-left{
+    display: none;
+}
+
+/* 共通 */
+.post {
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #fff;
+}
+.post:after {
+    content: '';
+    display: block;
+    margin-top: 2px;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #fff;
+}
+
+/* 共通 */
+#post_op .row{
+    margin-bottom: 0.5em !important;
+}
