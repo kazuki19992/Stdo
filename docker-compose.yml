@@ -1,33 +1,35 @@
-version: "3"
+version: '3.7'
+
 services:
-  db:
+  mysql:
     image: mysql:5.7
     volumes:
-      - ./db/mysql:/var/lib/mysql
+      - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root_pass_fB3uWvTS
+      MYSQL_ROOT_PASSWORD: 'password'
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
     restart: always
-    ports: ["8888:80"]
-    depends_on: ["db"]
+    ports:
+      - "8080:80"
 
-  php:
-    image: php:7.4-fpm
+  php-apache:
+    build: ./php
     volumes:
-      - ./nginx/html:/usr/share/nginx/html
-      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
-    depends_on: ["db"]
-
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/html:/usr/share/nginx/html
+      - ./htdocs:/var/www/html
     restart: always
-    ports: ["8080:80"]
-    depends_on: ["php"]
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
 
-# https://qiita.com/tomokei5634/items/ff0784e88b026b530e3e
+volumes:
+    db_data: {}
+
+    # https://codeaid.jp/blog/docker-lamp/

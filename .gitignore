@@ -1,0 +1,6 @@
+htdocs/helpers/DB_ACCOUNT_NAME
+htdocs/helpers/DB_ACCOUNT_PASS
+htdocs/helpers/DB_DSN
+htdocs/helpers/KEY
+htdocs/helpers/SITE_URL
+sql/
