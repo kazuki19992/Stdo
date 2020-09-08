@@ -5,7 +5,7 @@
   - ビルド結果だよ！`pass`になっているとうれしいね！🙃`error`になっているとかなしいね😢
 - [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
   - ライセンスだよ！MITライセンスだね！オープンソースだね！うれしいね！
-- [![issues](https://img.shields.io/github/issues/kazuki19992/Stdo)](ISSUES)
+- [![issues](https://img.shields.io/github/issues/kazuki19992/Stdo)](issues)
   - issueの数だよ！
 ## メモ
 ### db_helper
