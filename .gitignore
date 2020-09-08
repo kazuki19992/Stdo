@@ -4,3 +4,4 @@ htdocs/helpers/DB_DSN
 htdocs/helpers/KEY
 htdocs/helpers/SITE_URL
 sql/
+htdocs/deploy/
