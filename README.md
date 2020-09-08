@@ -1,5 +1,10 @@
 # Stdo
 
+## バッジ
+- [![Build Status](https://travis-ci.com/kazuki19992/Stdo.svg?branch=master)](https://travis-ci.com/kazuki19992/Stdo)
+  - ビルド結果だよ！緑になっているとうれしいね！🙃赤くなっているとかなしいね😢
+- [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+  - ライセンスだよ！MITライセンスだね！オープンソースだね！うれしいね！
 ## メモ
 ### db_helper
 - `get_db_connect()`
