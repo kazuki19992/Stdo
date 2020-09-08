@@ -3,7 +3,7 @@
 ?>
 
 <body>
-    <div id="contents">
+    <div id="content">
         <?php
         echo($HTML);
         ?>

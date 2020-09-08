@@ -29,6 +29,14 @@ services:
     depends_on:
       - mysql
 
+  # composer:
+  #   image: composer:2.0.0
+  #   command: 'composer update'
+  #   volumes: 
+  #     - ./htdocs:/app
+  #   links:
+  #     - php-apache
+
 volumes:
     db_data: {}
 

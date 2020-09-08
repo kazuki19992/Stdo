@@ -17,11 +17,13 @@ function get_db_connect(){
     return $dbh;
 }
 
-function acId_exists($dbh, $ac_id){
 
-    $sql = "SELECT COUNT(id) FROM Account where account_id = :account_id";
+// アカウントが存在するか確認
+function acId_exists($dbh, $std_id){
+
+    $sql = "SELECT COUNT(id) FROM User where std_id = :std_id";
     $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':account_id', $ac_id, PDO::PARAM_STR);
+    $stmt->bindValue(':account_id', $std_id, PDO::PARAM_STR);
     $stmt->execute();
     $count = $stmt->fetch(PDO::FETCH_ASSOC);    // 結果を配列で取得する
     if($count['COUNT(id)'] > 0){
