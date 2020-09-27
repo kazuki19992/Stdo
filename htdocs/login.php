@@ -18,16 +18,16 @@ if(!empty($_SESSION['member'])){
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $std_id = get_post('std_id');
+    $user_id = get_post('user_id');
     $password = get_post('password');
 
     $dbh = get_db_connect();    // DB接続
     $errs = array();
 
-    if(!check_words($std_id, 10)){
-        $errs['std_id'] = 'ユーザーID欄は必須、10文字以内で入力してください';
-    }elseif(!acId_exists($dbh, $std_id)){
-        $errs['std_id'] = 'このIDは登録されていません';
+    if(!check_words($user_id, 10)){
+        $errs['user_id'] = 'ユーザーID欄は必須、10文字以内で入力してください';
+    }elseif(!acId_exists($dbh, $user_id)){
+        $errs['user_id'] = 'このIDは登録されていません';
     }
 
     if(!check_words($password, 50)) {
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // メールアドレスとパスワードが一致するか検証する
     if(!check_words($password, 50)){
         $errs['password'] = 'パスワードは必須、50文字以内で入力してください';
-    }elseif(!$member = select_member_acId($dbh, $std_id, $password)){
+    }elseif(!$member = select_member_acId($dbh, $user_id, $password)){
         $errs['password'] = 'パスワードとログインIDが正しくありません';
     }
 

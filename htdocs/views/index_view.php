@@ -16,6 +16,7 @@ require('./views/parts/html_head.php');
                         <p class="clock_date"><span id="clock_year"></span>年<span id="clock_month"></span>月<span id="clock_day"></span>日 <span id="clock_week"></span>曜日</p>
                         <p class="clock_time"><span id="clock_hour"></span>:<span id="clock_min"></span><span id="clock_sec"></span></p>
                         <!-- <%-- デバッグ用 --%> -->
+                        <p class="clock_date">セッション情報<br><?php echo 'DB_ID: '.$user['id'].', ユーザーID: '.$user['user_id']; ?></p>
                     </div>
                 </div>
             </div>
@@ -60,10 +61,9 @@ require('./views/parts/html_head.php');
                 <div class="col s12">
                     <h5 class="orange-title">ビュー</h5>
                     <ul class="tabs">
-                        <li class="tab col s3"><a class="active" href="#multi-view">マルチ</a></li>
-                        <li class="tab col s3"><a href="#schedule-view">スケジュール</a></li>
-                        <li class="tab col s3"><a href="#task-view">タスク</a></li>
-                        <li class="tab col s3"><a href="#year-view">年間予定</a></li>
+                        <li class="tab col s4"><a class="active" href="#multi-view">マルチ</a></li>
+                        <li class="tab col s4"><a href="#schedule-view">スケジュール</a></li>
+                        <li class="tab col s4"><a href="#task-view">タスク</a></li>
                     </ul>
                 </div>
                 <div id="multi-view" class="col s12">
@@ -77,44 +77,42 @@ require('./views/parts/html_head.php');
                             </div>
 
                             <!-- ここに時間割をのせる -->
-                            <% if(now_season >= 0){ %>
-                                <%
-                                if(today_e == 6){
-                                    // 日曜日の場合
-                                %>
-                                    <p>今日の授業はありません</p>
-                                <%}else{%>
-                                <%for(int row = 0; row < 6; row++){
-                                        if(subject_array[now_season][today_exchange][row].equals("空きコマ")){
-                                %>
-                                <div class="view-card-empty">
-                                <%}else{%>
-                                <a class="modal-trigger table-card-a" href="#subject-detail-modal" onclick="selected_Subject_edit(<%= Subject_id_array[now_season][today_exchange][row] %>, '<%= subject_array[now_season][today_exchange][row] %>', '<%= today_full %>', <%= row+1 %>)">
-                                <div class="view-card lighten-1 waves-effect waves">
-                                <%}%>
-                                    <div class="view-num"><%= row+1 %></div>
-                                    <%
-                                    if(subject_array[now_season][today_exchange][row].equals("空きコマ")){ %>
-                                        <span class="view-color-empty"></span>
-                                    <%}else{%>
-                                        <span class="view-color <%=color_array[now_season][today_exchange][row]%>"></span>
-                                    <%}%>
-                                    <span class="view-data">
-                                        <div class="view-subject"><%=subject_array[now_season][today_exchange][row]%></div>
-                                        <div class="view-subject-task-empty red-text"></div>
-                                        <div class="view-subject-data"><%=period_section[row]%></div>
-                                    </span>
-                                    <span class="view-classroom"><%=classroom_array[now_season][today_exchange][row]%></span>
-                                </div>
-                                <%
-                                    if(subject_array[now_season][today_exchange][row].equals("空きコマ")){}else{ %>
-                                </a>
-                                <%}
-                                }
-                                }%>
-                            <% }else{ %>
-                                <p>現在の期間の授業はありません</p>
-                            <% } %>
+                            <?php
+                            if($today_e == 0){
+                                // 日曜日の場合
+                            ?>
+                                <p class="col s12">今日の授業はありません</p>
+                            <?php }else{ ?>
+                            <?php for($row = 0; $row < 6; $row++){
+                                $tmp_data = $calendar_data[$today_e - 1][$row];
+                                    if($tmp_data['subject'] === "空きコマ"){
+                            ?>
+                            <div class="view-card-empty">
+                            <?php }else{ ?>
+                            <a class="modal-trigger table-card-a" href="#subject-detail-modal" onclick="selected_Subject_edit(<?php echo $tmp_data['id']; ?>, '<?php echo $tmp_data['subject'] ?>', '<%= today_full %>', <%= row+1 %>)">
+                            <div class="view-card lighten-1 waves-effect waves">
+                            <?php } ?>
+                                <div class="view-num"><?php echo $row + 1; ?></div>
+                                <?php
+                                if($tmp_data['subject'] === "空きコマ"){ ?>
+                                    <span class="view-color-empty"></span>
+                                <?php }else{ ?>
+                                    <span class="view-color <?php echo $tmp_data['color']; ?>"></span>
+                                <?php } ?>
+                                <span class="view-data">
+                                    <div class="view-subject"><?php echo $tmp_data['subject'] ?></div>
+                                    <div class="view-subject-task-empty red-text"></div>
+                                    <div class="view-subject-data"></div>
+                                </span>
+                                <span class="view-classroom"><?php echo $tmp_data['classroom'] ?></span>
+                            </div>
+                            <?php
+                                if($tmp_data['subject'] !== "空きコマ"){}else{ ?>
+                            </a>
+                            <?php }
+                            }
+                            }
+                            ?>
                         </div>
                         <div class="col s6">
                             <h6 class="orange-title">タスク</h6>
@@ -304,36 +302,15 @@ require('./views/parts/html_head.php');
                         </div>
                     </div>
                 </div>
-                <div id="year-view" class="col s12">
-                    <div class="row">
-                        <div class="col s6">
-                            <h6 class="blue-title">前期</h6>
-
-                            <div class="card blue-grey lighten-4">
-                                <div class="card-content">
-                                    <span class="card-title">授業期間</span>
-                                    <p class="card-p"><strong><%= season1_start_day_str %> - <%= season1_end_day_str %></strong></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s6">
-                            <h6 class="blue-title">後期</h6>
-
-                            <div class="card blue-grey lighten-4">
-                                <div class="card-content">
-                                    <span class="card-title">授業期間</span>
-                                    <p class="card-p"><strong><%= season2_start_day_str %> - <%= season2_end_day_str %></strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
     <!-- modal -->
-    <%@ include file="modals/new_task.jsp" %>
+    <!-- <%@ include file="modals/new_task.jsp" %> -->
+    <?php
+    require('./views/modal/schedule.php');
+    ?>
 
     <%@ include file="modals/all_task.jsp" %>
 

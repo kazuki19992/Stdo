@@ -52,6 +52,10 @@ if($fp === FALSE){
 $site_url = fgets($fp);
 define('SITE_URL', $site_url);
 
+if(date_default_timezone_get() != "Asia/Tokyo"){
+    date_default_timezone_set("Asia/Tokyo"); //タイムゾーンを東京に設定
+}
+
 
 error_reporting(E_ALL & ~E_NOTICE);     // E_NOTICE以外のエラーをすべて出力する
 // 開発時はerror_reporting(E_ALL & ~E_NOTICE)としてE_NOTICE以外のエラーをすべて出力し、

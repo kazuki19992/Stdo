@@ -1,5 +1,6 @@
 <!-- ログインページ -->
 <?php
+// phpinfo();
 require('./views/html_head.php')
 ?>
 <body id="login_body">
@@ -8,20 +9,20 @@ require('./views/html_head.php')
         <div id="login-left">
             <br>
             <h5 id="blue-title">アカウントを持っていない場合は？</h5>
-            <p>はじめまして。アカウントを持っていない方は<a href="./signup.html">こちら</a>でアカウント登録が可能です。<BR>
-            アカウント登録を行うとNU-Calの各機能にアクセスすることが可能です。</p>
+            <p>はじめまして。アカウントを持っていない方は<a href="./signup.php">こちら</a>でアカウント登録が可能です。<BR>
+            アカウント登録を行うとStDoの各機能にアクセスすることが可能です。</p>
         </div>
         <div id="right">
             <form action="" method="POST">
                 <input type="hidden" name="mode" value="login">
-                <p>学生番号とパスワードを入力してログインしてください。</p>
+                <p>ユーザーIDとパスワードを入力してログインしてください。</p>
                 <div class="input-field">
-                    <input id="account_id" type="text" class="validate" name="std_id">
-                    <label for="account_id">学生番号</label>
+                    <input id="account_id" type="text" class="validate" name="user_id">
+                    <label for="account_id">ユーザーID</label>
                 </div>
                 <?php
-                if($errs['std_id'] !== null){
-                    echo '<i class="fas fa-exclamation-triangle"></i>'.$errs['std_id'];
+                if($errs['user_id'] !== null){
+                    echo '<i class="fas fa-exclamation-triangle"></i>'.$errs['user_id'];
                 }
                 ?>
                 <div class="input-field">
