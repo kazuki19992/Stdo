@@ -29,14 +29,21 @@ for($i = 0; $i < 6; $i++){
         $calendar_data[$i][$j]['classroom'] = '';
     }
 }
+// var_dump($schedule);
 
-for($i = 0; $i < count($schedule); $i++){
-    $tmp = $schedule[$i];
-    $calendar_data[$tmp['weekday']][$tmp['period']]['id'] = $tmp['id'];
-    $calendar_data[$tmp['weekday']][$tmp['period']]['subject'] = $tmp['subject_name'];
-    $calendar_data[$tmp['weekday']][$tmp['period']]['color'] = code2color($tmp['color']);
-    $calendar_data[$tmp['weekday']][$tmp['period']]['classroom'] = $tmp['classroom'];
+if($schedule !== null){
+    for($i = 0; $i < count($schedule); $i++){
+        $tmp = $schedule[$i];
+        $calendar_data[$tmp['weekday']][$tmp['period']]['id'] = $tmp['id'];
+        $calendar_data[$tmp['weekday']][$tmp['period']]['subject'] = $tmp['subject_name'];
+        $calendar_data[$tmp['weekday']][$tmp['period']]['color'] = code2color($tmp['color']);
+        $calendar_data[$tmp['weekday']][$tmp['period']]['classroom'] = $tmp['classroom'];
+    }
 }
+
+
+// タスクデータの取得
+$task_list = [];
 
 
 // var_dump($calendar);

@@ -16,7 +16,7 @@ require('./views/parts/html_head.php');
                         <p class="clock_date"><span id="clock_year"></span>年<span id="clock_month"></span>月<span id="clock_day"></span>日 <span id="clock_week"></span>曜日</p>
                         <p class="clock_time"><span id="clock_hour"></span>:<span id="clock_min"></span><span id="clock_sec"></span></p>
                         <!-- <%-- デバッグ用 --%> -->
-                        <p class="clock_date">セッション情報<br><?php echo 'DB_ID: '.$user['id'].', ユーザーID: '.$user['user_id']; ?></p>
+                        <!-- <p class="clock_date">セッション情報<br><?php echo 'DB_ID: '.$user['id'].', ユーザーID: '.$user['user_id']; ?></p> -->
                     </div>
                 </div>
             </div>
@@ -24,24 +24,24 @@ require('./views/parts/html_head.php');
 
             <div class="left-down row">
                 <div class="col s12">
-                    <h5 class="green-title">タスク管理</h5>
+                    <h5 class="green-title">時間割/タスク管理</h5>
                 </div>
 
-                <a class="waves-effect waves-light modal-trigger col s6" href="#new-task-modal">
+                <!-- <a class="waves-effect waves-light modal-trigger col s6" href="#new-task-modal">
                     <div id="top-new-task" class="waves-effect waves-light hoverable">
                         <div class="top-new-task-inner">
                             <i class="far fa-calendar-plus fa-6x"></i><br> 新規タスク
                         </div>
                     </div>
-                </a>
+                </a> -->
 
-                <a class="waves-effect waves-light modal-trigger col s6" href="#all-task-modal">
+                <!-- <a class="waves-effect waves-light modal-trigger col s6" href="#all-task-modal">
                     <div id="top-all-task" class="waves-effect waves-light hoverable">
                         <div class="top-all-task-inner">
                             <i class="fas fa-tasks fa-3x"></i><br> すべての未完タスク
                         </div>
                     </div>
-                </a>
+                </a> -->
 
                 <a class="waves-effect waves-light modal-trigger col s6" href="#schedule-modal">
                     <div id="top-edit-class" class="waves-effect waves-light hoverable">
@@ -61,9 +61,10 @@ require('./views/parts/html_head.php');
                 <div class="col s12">
                     <h5 class="orange-title">ビュー</h5>
                     <ul class="tabs">
-                        <li class="tab col s4"><a class="active" href="#multi-view">マルチ</a></li>
-                        <li class="tab col s4"><a href="#schedule-view">スケジュール</a></li>
-                        <li class="tab col s4"><a href="#task-view">タスク</a></li>
+                        <li class="tab col s3"><a class="active" href="#multi-view">マルチ</a></li>
+                        <li class="tab col s3"><a href="#schedule-view">スケジュール</a></li>
+                        <li class="tab col s3"><a href="#task-view">タスク</a></li>
+                        <li class="tab col s3"><a href="#view-settings">ビュー設定</a></li>
                     </ul>
                 </div>
                 <div id="multi-view" class="col s12">
@@ -114,10 +115,10 @@ require('./views/parts/html_head.php');
                             }
                             ?>
                         </div>
-                        <div class="col s6">
-                            <h6 class="orange-title">タスク</h6>
+                        <!-- <div class="col s6">
+                            <h6 class="orange-title">タスク</h6> -->
                             <!-- ココにタスク -->
-                            <% if(task_count >= 6){ %>
+                            <!-- < if(task_count >= 6){ ?>
                                 <% for(int i = 0; i < 6; i++){%>
                                     <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<%=task_id[i]%>, '<%=taskname[i]%>', '<%=task_deadline[i]%>', <%=task_period[i]%>, <%=task_priority[i]%>, '<%=task_memo[i]%>')">
                                         <div class="view-card lighten-1 waves-effect waves-<%= task_priority_color[task_priority[i]-1] %>">
@@ -146,7 +147,7 @@ require('./views/parts/html_head.php');
                                     </a>
                                 <% } %>
                             <% } %>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -237,13 +238,13 @@ require('./views/parts/html_head.php');
                     </div>
                 </div>
                 <div id="task-view" class="col s12">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col s12">
                             <h6 class="orange-title">タスク</h6>
                         </div>
-                        <div class="col s6">
+                        <div class="col s6"> -->
                             <!-- ココにタスク -->
-                            <% if(task_count >= 6){ %>
+                            <!-- <% if(task_count >= 6){ %>
                                 <% for(int i = 0; i < 6; i++){%>
                                     <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<%=task_id[i]%>, '<%=taskname[i]%>', '<%=task_deadline[i]%>', <%=task_period[i]%>, <%=task_priority[i]%>, '<%=task_memo[i]%>')">
                                         <div class="view-card lighten-1 waves-effect waves-<%= task_priority_color[task_priority[i]-1] %>">
@@ -273,9 +274,9 @@ require('./views/parts/html_head.php');
                                 <% } %>
                             <% } %>
                         </div>
-                        <div class="col s6">
+                        <div class="col s6"> -->
                             <!-- ココにタスク -->
-                            <% if(task_count - 6 >= 6){ %>
+                            <!-- <% if(task_count - 6 >= 6){ %>
                                 <% for(int i = 6; i < 12; i++){%>
                                     <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<%=task_id[i]%>, '<%=taskname[i]%>', '<%=task_deadline[i]%>', <%=task_period[i]%>, <%=task_priority[i]%>, '<%=task_memo[i]%>')">
                                         <div class="view-card lighten-1 waves-effect waves-<%= task_priority_color[task_priority[i]-1] %>">
@@ -303,6 +304,24 @@ require('./views/parts/html_head.php');
                                 <% } %>
                             <% } %>
                         </div>
+                    </div> -->
+                </div>
+                <div id="view-settings" class="col s12">
+                    <div class="row">
+                        <div class="col s6">
+                            <h6 class="blue-title">ビュー設定</h6>
+                        </div>
+                        <div class="col s12">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">工事中……</span>
+                                    <p>ビュー設定は工事中です！！！もうちょっとまっててね！！</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="https://twitter.com/intent/tweet?text=@Tech_Kazu%20%E9%96%8B%E7%99%BA%E3%81%8C%E3%82%93%E3%81%B0%E3%81%88%E3%83%BC%EF%BC%81%EF%BC%81%20http://stdo-app.net" class="btn-flat" target="_blank"><i class="fab fa-twitter"></i> 開発者を応援する</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -313,8 +332,10 @@ require('./views/parts/html_head.php');
     <!-- <%@ include file="modals/new_task.jsp" %> -->
     <?php
     require('./views/modal/schedule.php');
+    require('./views/modal/edit_subject.php');
+    require('./views/modal/new_task.php');
     ?>
-
+<!-- 
     <%@ include file="modals/all_task.jsp" %>
 
     <%@ include file="modals/schedule.jsp" %>
@@ -325,7 +346,7 @@ require('./views/parts/html_head.php');
 
     <%@ include file="modals/subject_detail.jsp" %>
 
-    <%@ include file="modals/exchange_subject.jsp" %>
+    <%@ include file="modals/exchange_subject.jsp" %> -->
 </body>
 
 <script src="./JS/show_hide.js"></script>

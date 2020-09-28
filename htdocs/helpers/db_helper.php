@@ -135,6 +135,77 @@ function getSchedule($dbh, $user_id){
     }
 }
 
+// 授業を登録する
+function setSchedule($dbh, $setScheduleData){
+    // 存在判定を行う
+    $sql = "SELECT * FROM Subject WHERE (added_user = :user_id) AND (period = :period) AND (weekday = :weekday)";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':user_id', $setScheduleData['user_id']);
+    $stmt->bindValue(':period', $setScheduleData['period']);
+    $stmt->bindValue(':weekday', $setScheduleData['weekday']);
+    $stmt->execute();
+    if($stmt->rowCount() > 0){
+        // 存在したら
+
+        // 送られてきたデータが空きコマかどうか調べる
+        if($setScheduleData['subject_name'] === ''){
+            // 空きコマデータだった場合はデータを削除する
+            $sql = "DELETE FROM Subject WHERE added_user = :user_id AND period = :period AND weekday = :weekday";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindValue(':user_id', $setScheduleData['user_id']);
+            $stmt->bindValue(':period', $setScheduleData['period']);
+            $stmt->bindValue(':weekday', $setScheduleData['weekday']);
+            if($stmt->execute()){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }else{
+            $sql = "UPDATE Subject SET subject_name = :subject_name, classroom = :classroom, color = :color WHERE added_user = :user_id AND period = :period AND weekday = :weekday";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindValue(':subject_name', $setScheduleData['subject_name']);
+            $stmt->bindValue(':classroom', $setScheduleData['classroom']);
+            $stmt->bindValue(':color', $setScheduleData['color']);
+            $stmt->bindValue(':user_id', $setScheduleData['user_id']);
+            $stmt->bindValue(':period', $setScheduleData['period']);
+            $stmt->bindValue(':weekday', $setScheduleData['weekday']);
+            if($stmt->execute()){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }
+    }else{
+        // 送られてきたデータが空きコマかどうか調べる
+        if($setScheduleData['subject_name'] === ''){
+            // 空きコマだった場合は何もせずに返す
+            return TRUE;
+        }else{
+            // 存在しなかったら
+            $sql = "INSERT INTO Subject (subject_name, classroom, color, period, weekday, added_user) VALUES (:subject_name, :classroom, :color, :period, :weekday, :user_id)";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindValue(':subject_name', $setScheduleData['subject_name']);
+            $stmt->bindValue(':classroom', $setScheduleData['classroom']);
+            $stmt->bindValue(':color', $setScheduleData['color']);
+            $stmt->bindValue(':user_id', $setScheduleData['user_id']);
+            $stmt->bindValue(':period', $setScheduleData['period']);
+            $stmt->bindValue(':weekday', $setScheduleData['weekday']);
+            if($stmt->execute()){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }
+    }
+}
+
+
+// タスクリストを取得
+function getTaskList($dbh, $user_id){
+    $sql = "SELECT * FROM Tasks WHERE added_user = :user_id";
+    $stmt = $dbh->prepare($sql);
+}
+
 // ユーザーidからアカウント名を取得
 function uid2ac_name($dbh, $user_id){
     $sql = "SELECT account_name FROM Account WHERE id = :user_id LIMIT 1";
