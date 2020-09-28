@@ -29,25 +29,25 @@
                 <div class="input-field col s12">
                     <select name="subject-color">
                     <option value="" disabled selected>講義カラーを選択</option>
-                    <option value="1" data-icon="./IMG/color/1.png">レッド</option>
-                    <option value="2" data-icon="./IMG/color/2.png">ディープオレンジ</option>
-                    <option value="3" data-icon="./IMG/color/3.png">オレンジ</option>
-                    <option value="4" data-icon="./IMG/color/4.png">アンバー</option>
-                    <option value="5" data-icon="./IMG/color/5.png">イエロー</option>
-                    <option value="6" data-icon="./IMG/color/6.png">ライム</option>
-                    <option value="7" data-icon="./IMG/color/7.png">ライトグリーン</option>
-                    <option value="8" data-icon="./IMG/color/8.png">グリーン</option>
-                    <option value="9" data-icon="./IMG/color/9.png">ティール</option>
-                    <option value="10" data-icon="./IMG/color/10.png">シアン</option>
-                    <option value="11" data-icon="./IMG/color/11.png">ライトブルー</option>
-                    <option value="12" data-icon="./IMG/color/12.png">ブルー</option>
-                    <option value="13" data-icon="./IMG/color/13.png">インディゴ</option>
-                    <option value="14" data-icon="./IMG/color/14.png">ディープパープル</option>
-                    <option value="15" data-icon="./IMG/color/15.png">パープル</option>
-                    <option value="16" data-icon="./IMG/color/16.png">ピンク</option>
-                    <option value="17" data-icon="./IMG/color/17.png">ブラウン</option>
-                    <option value="18" data-icon="./IMG/color/18.png">グレー</option>
-                    <option value="19" data-icon="./IMG/color/19.png">ブルーグレー</option>
+                    <option value="1" data-icon="./img/color/1.png">レッド</option>
+                    <option value="2" data-icon="./img/color/2.png">ディープオレンジ</option>
+                    <option value="3" data-icon="./img/color/3.png">オレンジ</option>
+                    <option value="4" data-icon="./img/color/4.png">アンバー</option>
+                    <option value="5" data-icon="./img/color/5.png">イエロー</option>
+                    <option value="6" data-icon="./img/color/6.png">ライム</option>
+                    <option value="7" data-icon="./img/color/7.png">ライトグリーン</option>
+                    <option value="8" data-icon="./img/color/8.png">グリーン</option>
+                    <option value="9" data-icon="./img/color/9.png">ティール</option>
+                    <option value="10" data-icon="./img/color/10.png">シアン</option>
+                    <option value="11" data-icon="./img/color/11.png">ライトブルー</option>
+                    <option value="12" data-icon="./img/color/12.png">ブルー</option>
+                    <option value="13" data-icon="./img/color/13.png">インディゴ</option>
+                    <option value="14" data-icon="./img/color/14.png">ディープパープル</option>
+                    <option value="15" data-icon="./img/color/15.png">パープル</option>
+                    <option value="16" data-icon="./img/color/16.png">ピンク</option>
+                    <option value="17" data-icon="./img/color/17.png">ブラウン</option>
+                    <option value="18" data-icon="./img/color/18.png">グレー</option>
+                    <option value="19" data-icon="./img/color/19.png">ブルーグレー</option>
                 </select>
                     <label>講義カラー</label>
                 </div>
