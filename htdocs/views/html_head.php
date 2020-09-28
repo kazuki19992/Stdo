@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <title>Joken</title>
+    <title>StDo 学生のためのスケジュール帳</title>
     <link rel="shortcut icon" href="./IMG/favicon.png" type="image/png">
 
     <!-- jQuery -->

@@ -156,80 +156,83 @@ require('./views/parts/html_head.php');
                             <h6 class="green-title">スケジュール(今日)</h6>
 
                             <!-- ここに時間割をのせる -->
-                            <% if(now_season >= 0){ %>
-                            <%
-                            if(today_e == 6){
+                            <?php
+                            if($today_e == 0){
                                 // 日曜日の場合
-                            %>
-                                <p>今日の授業はありません</p>
-                            <%}else{%>
-                            <%    for(int row = 0; row < 6; row++){
-                                    if(subject_array[now_season][today_exchange][row].equals("空きコマ")){ 
-                            %>
+                            ?>
+                                <p class="col s12">今日の授業はありません</p>
+                            <?php }else{ ?>
+                            <?php for($row = 0; $row < 6; $row++){
+                                $tmp_data = $calendar_data[$today_e - 1][$row];
+                                    if($tmp_data['subject'] === "空きコマ"){
+                            ?>
                             <div class="view-card-empty">
-                            <%}else{%>
-                            <a class="modal-trigger table-card-a" href="#subject-detail-modal" onclick="selected_Subject_edit(<%= Subject_id_array[now_season][today_exchange][row] %>, '<%= subject_array[now_season][today_exchange][row] %>', '<%= today_full %>', <%= row+1 %>)">
+                            <?php }else{ ?>
+                            <a class="modal-trigger table-card-a" href="#subject-detail-modal" onclick="selected_Subject_edit(<?php echo $tmp_data['id']; ?>, '<?php echo $tmp_data['subject'] ?>', '<%= today_full %>', <%= row+1 %>)">
                             <div class="view-card lighten-1 waves-effect waves">
-                            <%}%>
-                                <div class="view-num"><%= row+1 %></div>
-                                <%
-                                if(subject_array[now_season][today_exchange][row].equals("空きコマ")){ %>
+                            <?php } ?>
+                                <div class="view-num"><?php echo $row + 1; ?></div>
+                                <?php
+                                if($tmp_data['subject'] === "空きコマ"){ ?>
                                     <span class="view-color-empty"></span>
-                                <%}else{%>
-                                    <span class="view-color <%=color_array[now_season][today_exchange][row]%>"></span>
-                                <%}%>
+                                <?php }else{ ?>
+                                    <span class="view-color <?php echo $tmp_data['color']; ?>"></span>
+                                <?php } ?>
                                 <span class="view-data">
-                                    <div class="view-subject"><%=subject_array[now_season][today_exchange][row]%></div>
+                                    <div class="view-subject"><?php echo $tmp_data['subject'] ?></div>
                                     <div class="view-subject-task-empty red-text"></div>
-                                    <div class="view-subject-data"><%=period_section[row]%></div>
+                                    <div class="view-subject-data"></div>
                                 </span>
-                                <span class="view-classroom"><%=classroom_array[now_season][today_exchange][row]%></span>
+                                <span class="view-classroom"><?php echo $tmp_data['classroom'] ?></span>
                             </div>
-                            <%
-                                if(subject_array[now_season][today_exchange][row].equals("空きコマ")){}else{ %>
+                            <?php
+                                if($tmp_data['subject'] !== "空きコマ"){}else{ ?>
                             </a>
-                            <%}
+                            <?php }
                             }
-                            }%>
-                            <% }else{ %>
-                                <p>現在の期間の授業はありません</p>
-                            <% } %>
+                            }
+                            ?>
                         </div>
                         <div class="col s6">
                             <h6 class="orange-title">次の授業日</h6>
 
                             <!-- ここに時間割をのせる -->
-                            <% if(now_season >= 0){ %>
-                            <%for(int row = 0; row < 6; row++){
-                                    if(subject_array[now_season][nextday_exchange][row].equals("空きコマ")){
-                            %>
+                            <?php
+                            if($next_e == 0){
+                                // 日曜日の場合
+                            ?>
+                                <p class="col s12">今日の授業はありません</p>
+                            <?php }else{ ?>
+                            <?php for($row = 0; $row < 6; $row++){
+                                $tmp_data = $calendar_data[$next_e - 1][$row];
+                                    if($tmp_data['subject'] === "空きコマ"){
+                            ?>
                             <div class="view-card-empty">
-                            <%}else{%>
-                            <a class="modal-trigger table-card-a" href="#subject-detail-modal" onclick="selected_Subject_edit(<%= Subject_id_array[now_season][nextday_exchange][row] %>, '<%= subject_array[now_season][nextday_exchange][row] %>', '<%= next_day %>', <%= row+1 %>)">
+                            <?php }else{ ?>
+                            <a class="modal-trigger table-card-a" href="#subject-detail-modal" onclick="selected_Subject_edit(<?php echo $tmp_data['id']; ?>, '<?php echo $tmp_data['subject'] ?>', '<%= today_full %>', <%= row+1 %>)">
                             <div class="view-card lighten-1 waves-effect waves">
-                            <%}%>
-                                <div class="view-num"><%= row+1 %></div>
-                                <%
-                                if(subject_array[now_season][nextday_exchange][row].equals("空きコマ")){ %>
+                            <?php } ?>
+                                <div class="view-num"><?php echo $row + 1; ?></div>
+                                <?php
+                                if($tmp_data['subject'] === "空きコマ"){ ?>
                                     <span class="view-color-empty"></span>
-                                <%}else{%>
-                                    <span class="view-color <%=color_array[now_season][nextday_exchange][row]%>"></span>
-                                <%}%>
+                                <?php }else{ ?>
+                                    <span class="view-color <?php echo $tmp_data['color']; ?>"></span>
+                                <?php } ?>
                                 <span class="view-data">
-                                    <div class="view-subject"><%=subject_array[now_season][nextday_exchange][row]%></div>
+                                    <div class="view-subject"><?php echo $tmp_data['subject'] ?></div>
                                     <div class="view-subject-task-empty red-text"></div>
-                                    <div class="view-subject-data"><%=period_section[row]%></div>
+                                    <div class="view-subject-data"></div>
                                 </span>
-                                <span class="view-classroom"><%=classroom_array[now_season][nextday_exchange][row]%></span>
+                                <span class="view-classroom"><?php echo $tmp_data['classroom'] ?></span>
                             </div>
-                            <%
-                                if(subject_array[now_season][nextday_exchange][row].equals("空きコマ")){}else{ %>
+                            <?php
+                                if($tmp_data['subject'] !== "空きコマ"){}else{ ?>
                             </a>
-                            <%}
-                            }%>
-                            <% }else{ %>
-                                <p>現在の期間の授業はありません</p>
-                            <% } %>
+                            <?php }
+                            }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
