@@ -27,21 +27,21 @@ require('./views/parts/html_head.php');
                     <h5 class="green-title">時間割/タスク管理</h5>
                 </div>
 
-                <!-- <a class="waves-effect waves-light modal-trigger col s6" href="#new-task-modal">
+                <a class="waves-effect waves-light modal-trigger col s6" href="#new-task-modal">
                     <div id="top-new-task" class="waves-effect waves-light hoverable">
                         <div class="top-new-task-inner">
                             <i class="far fa-calendar-plus fa-6x"></i><br> 新規タスク
                         </div>
                     </div>
-                </a> -->
+                </a>
 
-                <!-- <a class="waves-effect waves-light modal-trigger col s6" href="#all-task-modal">
+                <a class="waves-effect waves-light modal-trigger col s6" href="#all-task-modal">
                     <div id="top-all-task" class="waves-effect waves-light hoverable">
                         <div class="top-all-task-inner">
                             <i class="fas fa-tasks fa-3x"></i><br> すべての未完タスク
                         </div>
                     </div>
-                </a> -->
+                </a>
 
                 <a class="waves-effect waves-light modal-trigger col s6" href="#schedule-modal">
                     <div id="top-edit-class" class="waves-effect waves-light hoverable">
@@ -115,12 +115,12 @@ require('./views/parts/html_head.php');
                             }
                             ?>
                         </div>
-                        <!-- <div class="col s6">
-                            <h6 class="orange-title">タスク</h6> -->
+                        <div class="col s6">
+                            <h6 class="orange-title">タスク</h6>
                             <!-- ココにタスク -->
-                            <!-- < if(task_count >= 6){ ?>
-                                <% for(int i = 0; i < 6; i++){%>
-                                    <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<%=task_id[i]%>, '<%=taskname[i]%>', '<%=task_deadline[i]%>', <%=task_period[i]%>, <%=task_priority[i]%>, '<%=task_memo[i]%>')">
+                            <?php if($cnt_task >= 6 && $cnt_task !== 0){ ?>
+                                <?php for($i = 0; $i < 6; $i++){?>
+                                    <!-- <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<?php $task_list[$i]['id']?>, '<%=taskname[i]%>', '<%=task_deadline[i]%>', <%=task_period[i]%>, <%=task_priority[i]%>, '<%=task_memo[i]%>')">
                                         <div class="view-card lighten-1 waves-effect waves-<%= task_priority_color[task_priority[i]-1] %>">
                                             <span class="view-color <%= task_priority_color[task_priority[i]-1] %>"></span>
                                             <span class="view-data">
@@ -129,25 +129,35 @@ require('./views/parts/html_head.php');
                                                 <div class="view-subject-data">- <%= task_deadline[i] %> <%= task_period[i] %>限</div>
                                             </span>
                                         </div>
+                                    </a> -->
+                                    <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<?php echo $task_list[$i]['id'] ?>, '<?php echo $task_list[$i]['taskname'] ?>', '<?php echo $task_list[$i]['day']?>', <?php echo $task_list[$i]['period'] ?>, <?php echo $task_list[$i]['priority'] ?>, '<?php echo $task_memo[$i]['memo'] ?>')">
+                                        <div class="view-card lighten-1 waves-effect waves-<?php echo $task_priority_color[(int)$task_list[$i]['priority']-1] ?>">
+                                            <span class="view-color <?php echo $task_priority_color[(int)$task_list[$i]['priority']-1] ?>"></span>
+                                            <span class="view-data">
+                                                <div class="view-subject"><?php echo $task_list[$i]['taskname'] ?></div>
+                                                <div class="view-subject-task <?php echo $task_priority_color[(int)$task_list[$i]['priority']-1] ?>-text"><?php echo $task_priority[(int)$task_list[$i]['priority']-1] ?></div>
+                                                <div class="view-subject-data">- <?php echo $task_list[$i]['day'] ?> <?php echo $task_list[$i]['period'] ?>限</div>
+                                            </span>
+                                        </div>
                                     </a>
-                                <% } %>
-                            <% }else if(taskname[0].equals("-1")){ %>
+                                <?php } ?>
+                            <?php }else if($cnt_task === 0){ ?>
                                     <p>タスクはありません</p>
-                            <% }else{ %>
-                                <% for(int i = 0; i < task_count ; i++){ %>
-                                    <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<%=task_id[i]%>, '<%=taskname[i]%>', '<%=task_deadline[i]%>', <%=task_period[i]%>, <%=task_priority[i]%>, '<%=task_memo[i]%>')">
-                                        <div class="view-card lighten-1 waves-effect waves-<%= task_priority_color[task_priority[i]-1] %>">
-                                            <span class="view-color <%= task_priority_color[task_priority[i]-1] %>"></span>
+                            <?php }else{ ?>
+                                <?php for($i = 0; $i < $cnt_task ; $i++){ ?>
+                                    <a class="modal-trigger table-card-a" href="#task-detail-modal" onclick="selected_task(<?php echo $task_list[$i]['id'] ?>, '<?php echo $task_list[$i]['taskname'] ?>', '<?php echo $task_list[$i]['day']?>', <?php echo $task_list[$i]['period'] ?>, <?php echo $task_list[$i]['priority'] ?>, '<?php echo $task_memo[$i]['memo'] ?>')">
+                                        <div class="view-card lighten-1 waves-effect waves-<?php echo $task_priority_color[(int)$task_list[$i]['priority']-1] ?>">
+                                            <span class="view-color <?php echo $task_priority_color[(int)$task_list[$i]['priority']-1] ?>"></span>
                                             <span class="view-data">
-                                                <div class="view-subject"><%= taskname[i] %></div>
-                                                <div class="view-subject-task-empty red-text"></div>
-                                                <div class="view-subject-data">- <%= task_deadline[i] %> <%= task_period[i] %>限</div>
+                                                <div class="view-subject"><?php echo $task_list[$i]['taskname'] ?></div>
+                                                <div class="view-subject-task <?php echo $task_priority_color[(int)$task_list[$i]['priority']-1] ?>-text"><?php echo $task_priority[(int)$task_list[$i]['priority']-1] ?></div>
+                                                <div class="view-subject-data">- <?php echo $task_list[$i]['day'] ?> <?php echo $task_list[$i]['period'] ?>限</div>
                                             </span>
                                         </div>
                                     </a>
-                                <% } %>
-                            <% } %>
-                        </div> -->
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
 
@@ -334,6 +344,7 @@ require('./views/parts/html_head.php');
     require('./views/modal/schedule.php');
     require('./views/modal/edit_subject.php');
     require('./views/modal/new_task.php');
+    require('./views/modal/all_task.php');
     ?>
 <!-- 
     <%@ include file="modals/all_task.jsp" %>

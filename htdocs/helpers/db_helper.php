@@ -202,8 +202,47 @@ function setSchedule($dbh, $setScheduleData){
 
 // タスクリストを取得
 function getTaskList($dbh, $user_id){
-    $sql = "SELECT * FROM Tasks WHERE added_user = :user_id";
+    $sql = "SELECT * FROM Tasks WHERE (added_user = :user_id) AND (complete IS NULL)";
     $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':user_id', $user_id);
+    $stmt->execute();
+    if($stmt->rowCount() > 0){
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+}
+
+// タスクリストに登録
+function setTaskList($dbh, $taskdata){
+    $sql = "INSERT INTO Tasks (taskname, priority, day, period, memo, added_user) VALUES (:taskname, :priority, :day, :period, :memo, :added_user)";
+
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':taskname', $taskdata['name']);
+    $stmt->bindValue(':priority', $taskdata['priority']);
+    $stmt->bindValue(':day', $taskdata['day']);
+    $stmt->bindValue(':period', $taskdata['period']);
+    $stmt->bindValue(':memo', $taskdata['memo']);
+    $stmt->bindValue(':added_user', $taskdata['user']);
+
+    if($stmt->execute()){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+}
+
+// タスク完了
+function completeTask($dbh, $taskid){
+    $date = date('Y-m-d H:i:s');
+    $sql = "UPDATE Tasks SET complete = :date WHERE id = :task_id";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':date', $date);
+    $stmt->bindValue(':task_id', $taskid);
+    if($stmt->execute()){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
 }
 
 // ユーザーidからアカウント名を取得
@@ -220,37 +259,4 @@ function uid2ac_name($dbh, $user_id){
             return FALSE;
         }
     }
-}
-
-function post_store($dbh){
-    if(isset($_FILES['img'])){
-        $img = $_FILES['img'];
-        $err = array();
-        $type =exif_imagetype($img['tmp_name']);
-        if($type !== IMAGETYPE_JPEG && $type !== IMAGETYPE_PNG){
-            $err['pic'] = '対象ファイルはjpgまたはpngのみです。';
-
-        }elseif($img['size'] > 10240000){
-            $err['pic'] = 'ファイルサイズは10MB以下にしてください！';
-
-        }else{
-            $extension = pathinfo($img['name'], PATHINFO_EXTENSION);
-            $new_img = md5(uniqid(mt_rand(), true)).'.'.$extension;
-            move_uploaded_file($img['tmp_name'], './IMG/'.$new_img);
-        }
-        $img_path = "./IMG/".$new_img;
-    }
-    
-    $date = date('Y-m-d H:i:s');
-    if($_POST['is_koriyama_true'] === "on"){
-        $is_koriyama = TRUE;
-    }else{
-        $is_koriyama = FALSE;
-    }
-
-    $store_name = $_POST['store_name'];
-
-    $discription = "私は、".$_POST['cuisine']."を食べました。<BR>".$_POST['kanso'];
-    $sql = "INSERT INTO data (img_path, store_name, contributor, date, genre, is_koriyama, discription) VALUE ('{$img_path}', '{$store_name}', '{$_SESSION['member']['id']}', '{$date}', '{$_POST['genre']}', '{$is_koriyama}', '{$discription}')";
-    $dbh -> query($sql);
 }

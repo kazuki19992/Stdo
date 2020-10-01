@@ -1,6 +1,6 @@
 <!-- modal -->
 <div id="new-task-modal" class="modal">
-    <form action="./calendar" method="POST">
+    <form action="./post_task.php" method="POST">
         <input type="hidden" name="mode" value="new-task">
         <input type="hidden" name="account_id" value="<?php echo $user['id']; ?>">
         <div class="modal-content">

@@ -43,22 +43,22 @@ for ($i = 1; $i < $last_day + 1; $i++) {
 ?>
 <table class="cal col s6 centered">
     <tr>
+        <td class="week sun">日</td>
         <td class="week">月</td>
         <td class="week">火</td>
         <td class="week">水</td>
         <td class="week">木</td>
         <td class="week">金</td>
         <td class="week sat">土</td>
-        <td class="week sun">日</td>
     </tr>
     <tr class="cal-border-none">
     <?php $cnt = 0; ?>
     <?php foreach ($calendar as $key => $value): ?>
 
-        <?php if($today_date == $value['day'] && $cnt == 6){ ?>
-            <td class="day cyan lighten-3">
-        <?php }elseif($today_date == $value['day'] && $cnt == 7){ ?>
+        <?php if($today_date == $value['day'] && $cnt == 1){ ?>
             <td class="day pink lighten-3">
+        <?php }elseif($today_date == $value['day'] && $cnt == 7){ ?>
+            <td class="day cyan lighten-3">
         <?php }elseif($today_date == $value['day']){ ?>
             <td class="day light-green lighten-3">
         <?php }else{ ?>
@@ -66,10 +66,10 @@ for ($i = 1; $i < $last_day + 1; $i++) {
         <?php } ?>
         <?php $cnt++; ?>
         <?php
-        if($cnt == 6){
-            $sat_or_sun = 'sat';
-        }else if($cnt == 7){
+        if($cnt == 1){
             $sat_or_sun = 'sun';
+        }else if($cnt == 7){
+            $sat_or_sun = 'sat';
         }else{
             $sat_or_sun = '';
         }

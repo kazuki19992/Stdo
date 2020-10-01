@@ -43,8 +43,25 @@ if($schedule !== null){
 
 
 // タスクデータの取得
-$task_list = [];
+$task_list = getTaskList($dbh, $user['id']);
 
+// taskListがnullなら$cnt_taskが0が入る
+$cnt_task = $task_list === NULL ? 0 : count($task_list);
+
+$task_priority_color = [
+    'red',
+    'orange',
+    'green',
+    'purple'
+];
+$task_priority = [
+    '優先度:最優先',
+    '優先度:高',
+    '優先度:中',
+    '優先度:低'
+];
+
+// var_dump($task_list);
 
 // var_dump($calendar);
 
