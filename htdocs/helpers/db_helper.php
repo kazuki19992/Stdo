@@ -70,7 +70,7 @@ function select_member_acId($dbh, $user_id, $password){
                 // 役職から記事閲覧レベルを取得
                 $data['view_level'] = role_to_view_range($dbh, $role_id);
             }
-            login_time($dbh, $data['id']);
+            // login_time($dbh, $data['id']);
             return $data;   // 会員データを渡す
         }else{
             return FALSE;

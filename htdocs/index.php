@@ -61,6 +61,11 @@ $task_priority = [
     '優先度:低'
 ];
 
+
+
+// 最終ログイン時間を変更
+login_time($dbh, $user['id']);
+
 // var_dump($task_list);
 
 // var_dump($calendar);
